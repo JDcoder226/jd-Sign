@@ -136,12 +136,4 @@ eas build -p ios
 
 Ce dépôt est fourni sans licence explicite; ajoute un fichier `LICENSE` si tu veux appliquer une licence.
 
----
 
-Si tu veux, je peux :
-
-- ajouter des badges (build / version),
-- ajouter des instructions détaillées pour les développeurs (ex. config Expo EAS, variables d'environnement),
-- générer un fichier `CONTRIBUTING.md`.
-
-Souhaites-tu que j'ajoute des badges et un guide EAS détaillé ?

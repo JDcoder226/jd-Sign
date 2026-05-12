@@ -134,6 +134,6 @@ eas build -p ios
 
 ## Licence
 
-Ce dépôt est fourni sans licence explicite; ajoute un fichier `LICENSE` si tu veux appliquer une licence.
+Ce projet est sous licence **MIT**. Consulte le fichier [LICENSE](LICENSE) pour plus de détails.
 
 

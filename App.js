@@ -1,20 +1,45 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { ActivityIndicator, View } from 'react-native';
+import { AppProvider } from './src/context/AppContext';
+import { ThemeProvider, useTheme } from './src/context/ThemeContext';
+import AppNavigator from './src/navigation/AppNavigator';
+import { checkPinExists } from './src/utils/storage';
+import { colors as fallbackColors } from './src/theme';
 
-export default function App() {
+function AppShell() {
+  const { theme } = useTheme();
+  const colors = theme?.colors ?? fallbackColors;
+  const [loading, setLoading] = useState(true);
+  const [pinSetup, setPinSetup] = useState(false);
+
+  useEffect(() => {
+    const init = async () => {
+      const exists = await checkPinExists();
+      setPinSetup(exists);
+      setLoading(false);
+    };
+    init();
+  }, []);
+
+  if (loading) {
+    return (
+      <View style={{ flex: 1, backgroundColor: colors.bg, justifyContent: 'center', alignItems: 'center' }}>
+        <ActivityIndicator size="large" color={colors.accent} />
+      </View>
+    );
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <AppProvider>
+      <AppNavigator pinSetup={pinSetup} />
+    </AppProvider>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default function App() {
+  return (
+    <ThemeProvider>
+      <AppShell />
+    </ThemeProvider>
+  );
+}

@@ -1,29 +1,32 @@
 {
   "expo": {
-    "name": "jd-sign",
-    "slug": "jd-sign",
+    "name": "JD-SIGN",
+    "slug": "jsign",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
-    "newArchEnabled": true,
+    "userInterfaceStyle": "dark",
     "splash": {
-      "image": "./assets/splash-icon.png",
+      "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#080810"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": false,
+      "bundleIdentifier": "com.jsign.app",
+      "infoPlist": {
+        "NSFaceIDUsageDescription": "Utilisé pour déverrouiller JD-SIGN rapidement."
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#080810"
       },
-      "edgeToEdgeEnabled": true
+      "package": "com.jsign.app"
     },
-    "web": {
-      "favicon": "./assets/favicon.png"
-    }
+    "plugins": [
+      "expo-secure-store"
+    ]
   }
 }
